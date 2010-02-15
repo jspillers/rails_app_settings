@@ -1,0 +1,66 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateSettings (20100215193621)
+  [4;36;1mSQL (1.0ms)[0m   [0;1mCREATE TABLE "settings" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar(255), "value" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100215193621')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("settings")[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" [0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."key" IS NULL) LIMIT 1[0m
+  [4;35;1mSetting Load (0.3ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."key" = 'asdf') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."key" = 'asdf') LIMIT 1[0m
+  [4;35;1mSetting Load (0.1ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."key" = 'find_by_key') LIMIT 1[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSetting Load (0.2ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."key" = 'fooasdf') LIMIT 1[0m
+  [4;35;1mSetting Load (0.3ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+  [4;36;1mSetting Create (9.8ms)[0m   [0;1mINSERT INTO "settings" ("updated_at", "value", "key", "created_at") VALUES('2010-02-15 21:00:57', 'blah', 'foo', '2010-02-15 21:00:57')[0m
+  [4;35;1mSetting Load (0.4ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+  [4;36;1mSetting Load (0.3ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+  [4;35;1mSetting Delete all (3.3ms)[0m   [0mDELETE FROM "settings" WHERE 1=1[0m
+  [4;36;1mSetting Load (0.2ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+  [4;35;1mSetting Create (0.5ms)[0m   [0mINSERT INTO "settings" ("updated_at", "value", "key", "created_at") VALUES('2010-02-15 21:01:50', '--- 
+- asdf
+', 'foo', '2010-02-15 21:01:50')[0m
+  [4;36;1mSetting Load (0.6ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+Cache read: foo
+  [4;36;1mSetting Load (0.4ms)[0m   [0;1mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+Cache write: foo
+Cache read: foo
+Cache read: foo
+  [4;35;1mSetting Load (0.4ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."key" = 'foo') LIMIT 1[0m
+  [4;36;1mSetting Update (0.6ms)[0m   [0;1mUPDATE "settings" SET "value" = 'bar', "updated_at" = '2010-02-15 21:27:33' WHERE "id" = 2[0m
+Cache write: foo
+Cache read: foo
+Cache read: foo
+Cache read: foo
+Cache read: foo
+  [4;35;1mSetting Load (0.3ms)[0m   [0mSELECT * FROM "settings" WHERE ("settings"."key" = 'baz') LIMIT 1[0m
+  [4;36;1mSetting Create (0.8ms)[0m   [0;1mINSERT INTO "settings" ("updated_at", "value", "key", "created_at") VALUES('2010-02-15 21:28:09', 'blah', 'baz', '2010-02-15 21:28:09')[0m
+Cache write: baz
+Cache read: baz
