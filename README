@@ -1,1 +1,7 @@
 Rails ActiveRecord model that handles an arbitrary key value store for use in application wide settings
+
+run the specs:
+rake spec
+
+to play with this with caching enabled use:
+./script/console dev_cache

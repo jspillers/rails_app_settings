@@ -23,8 +23,8 @@ class Setting < ActiveRecord::Base
       else
         setting = Rails.cache.read(meth)
         if setting.nil? 
-          setting = self.find_by_key(meth).value
-          Rails.cache.write(meth, setting)
+          setting = self.find_by_key(meth).try(:value)
+          Rails.cache.write(meth, setting) if setting
         end
         setting
       end
